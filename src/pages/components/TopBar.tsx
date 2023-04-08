@@ -2,16 +2,17 @@ import {BackHandler, StyleSheet, View} from 'react-native';
 import {Button} from './Button';
 import {Back, Refresh} from './icons';
 
-const TopBar = () => {
-  const onExit = () => {
-    BackHandler.exitApp();
-  };
+interface ITopBarProps {
+  onBack: () => void;
+}
 
+const TopBar = (props: ITopBarProps) => {
+  const {onBack} = props;
   const clearAllCells = () => {};
 
   return (
     <View style={styles.topBar}>
-      <Button icon={<Back width={40} height={40} />} onPress={onExit} />
+      <Button icon={<Back width={40} height={40} />} onPress={onBack} />
       <Button
         icon={<Refresh width={40} height={40} />}
         onPress={clearAllCells}

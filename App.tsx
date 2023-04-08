@@ -2,22 +2,26 @@ import {StyleSheet, Text, View} from 'react-native';
 import {Level} from './src/pages/level/Level';
 import {Provider} from 'react-redux';
 import {store} from './src/store/store';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {Levels} from './src/pages/levels/Levels';
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
+    <NavigationContainer>
       <Provider store={store}>
-        <Level />
+        <Stack.Navigator
+          screenOptions={{
+            headerShown: false,
+          }}
+          initialRouteName={'Levels'}
+        >
+          <Stack.Screen name="Levels" component={Levels} />
+          <Stack.Screen name="Level" component={Level} />
+        </Stack.Navigator>
       </Provider>
-    </View>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

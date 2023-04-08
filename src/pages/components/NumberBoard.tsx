@@ -31,7 +31,7 @@ const NumberBoard = () => {
             key={number}
             icon={buttonIcon}
             text={buttonText}
-            onPress={() => changeActiveCellValue(index + 1)}
+            onPress={() => changeActiveCellValue(index < 9 ? index + 1 : 0)}
             style={styles.numBoardElement}
           />
         );
