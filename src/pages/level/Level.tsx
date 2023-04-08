@@ -7,18 +7,38 @@ import {useDispatch, useSelector} from 'react-redux';
 import {checkIsSolved, getLevel} from '../../store/levelSlice';
 import {TopBar} from '../components/TopBar';
 import {Win} from '../components/Win';
+import {RouteProp} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 
-const Level = () => {
+type RootStackParamList = {
+  Level: {id: string};
+};
+
+type LevelRouteProp = RouteProp<RootStackParamList, 'Level'>;
+type LevelNavigationProp = NativeStackNavigationProp<
+  RootStackParamList,
+  'Level'
+>;
+
+interface ILevelProps {
+  route: LevelRouteProp;
+  navigation: LevelNavigationProp;
+}
+
+const Level = (props: ILevelProps) => {
+  const {navigation, route} = props;
   const dispatch = useDispatch<any>();
   const isSolved = useSelector(checkIsSolved);
 
   useEffect(() => {
-    dispatch(getLevel('bbbbbbbbbb' as string));
+    dispatch(getLevel(route.params.id));
   }, []);
+
+  const onBack = () => navigation.goBack();
 
   return (
     <View style={styles.level}>
-      <TopBar />
+      <TopBar onBack={onBack} />
       {isSolved ? (
         <Win />
       ) : (
