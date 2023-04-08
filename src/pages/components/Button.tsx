@@ -1,13 +1,7 @@
 import React, {ReactElement, useMemo, useRef} from 'react';
-import {
-  StyleProp,
-  StyleSheet,
-  Text,
-  TouchableWithoutFeedback,
-  View,
-  ViewStyle,
-} from 'react-native';
+import {StyleProp, StyleSheet, Text, ViewStyle} from 'react-native';
 import {Colors} from '../../style';
+import {Container} from './Container';
 
 interface IButtonProps {
   text?: string;
@@ -16,39 +10,21 @@ interface IButtonProps {
   style?: StyleProp<ViewStyle>;
 }
 
-const Button = (props: IButtonProps) => {
+export const Button = (props: IButtonProps) => {
   const {text, icon, onPress, style} = props;
 
-  const buttonStyle = useMemo(() => [styles.button, style], [style]);
-
   return (
-    <TouchableWithoutFeedback onPress={onPress}>
-      <View style={buttonStyle}>
-        {icon}
-        <Text style={styles.text}>{text || ''}</Text>
-      </View>
-    </TouchableWithoutFeedback>
+    <Container onPress={onPress} style={style}>
+      {icon}
+      <Text style={styles.text}>{text || ''}</Text>
+    </Container>
   );
 };
 
 const styles = StyleSheet.create({
-  button: {
-    aspectRatio: 1,
-    width: '18%',
-    borderWidth: 1,
-    borderRadius: 5,
-    borderColor: Colors.TEXT_PRIMARY,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    // elevation: 20,
-    // shadowColor: "black",
-  },
   text: {
     fontWeight: 'bold',
     fontSize: 42,
     color: Colors.TEXT_PRIMARY,
   },
 });
-
-export {Button};

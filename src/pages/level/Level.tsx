@@ -9,6 +9,7 @@ import {TopBar} from '../components/TopBar';
 import {Win} from '../components/Win';
 import {RouteProp} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {Screen} from '../components/Screen';
 
 type RootStackParamList = {
   Level: {id: string};
@@ -37,7 +38,7 @@ const Level = (props: ILevelProps) => {
   const onBack = () => navigation.goBack();
 
   return (
-    <View style={styles.level}>
+    <Screen style={styles.level}>
       <TopBar onBack={onBack} />
       {isSolved ? (
         <Win />
@@ -47,15 +48,13 @@ const Level = (props: ILevelProps) => {
           <NumberBoard />
         </>
       )}
-    </View>
+    </Screen>
   );
 };
 
 const styles = StyleSheet.create({
   level: {
-    flex: 1,
-    alignSelf: 'stretch',
-    backgroundColor: Colors.APP_PRIMARY,
+    // alignSelf: 'stretch',
     alignItems: 'center',
   },
 });

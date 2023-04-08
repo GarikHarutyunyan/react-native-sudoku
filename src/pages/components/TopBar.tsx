@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     margin: 25,
     justifyContent: 'space-between',
     alignSelf: 'stretch',
-    marginTop: 70,
+    marginTop: 0,
   },
 });
 
