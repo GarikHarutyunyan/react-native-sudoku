@@ -1,4 +1,4 @@
-import React, {ReactElement} from 'react';
+import React, {ReactElement, useMemo, useRef} from 'react';
 import {
   StyleProp,
   StyleSheet,
@@ -17,15 +17,9 @@ interface IButtonProps {
 }
 
 const Button = (props: IButtonProps) => {
-  const onPress = () => {
-    const {onPress} = props;
+  const {text, icon, onPress, style} = props;
 
-    onPress && onPress();
-  };
-
-  const {icon, text, style} = props;
-
-  const buttonStyle = [styles.button, style];
+  const buttonStyle = useMemo(() => [styles.button, style], [style]);
 
   return (
     <TouchableWithoutFeedback onPress={onPress}>
