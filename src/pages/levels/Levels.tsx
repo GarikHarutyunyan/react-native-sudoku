@@ -8,6 +8,7 @@ import {Colors} from '../../style';
 import {Container} from '../components/Container';
 import {Screen} from '../components/Screen';
 import {Grid} from '../components/Grid';
+import {selectLastAvailableLevel} from '../../store/userSlice';
 
 type RootStackParamList = {
   Level: {id: string};
@@ -24,27 +25,32 @@ interface ILevelsProps {
 
 const Levels = (props: ILevelsProps) => {
   const {navigation} = props;
-  const dispatch = useDispatch<any>();
   const levels: ILevel[] = useSelector(selectLevels);
+  const lastAvailableLevel: number = useSelector(selectLastAvailableLevel);
+
+  const dispatch = useDispatch<any>();
 
   useEffect(() => {
     dispatch(getLevels());
   }, []);
 
-  const renderItem = ({item: level, index}: {item: ILevel; index: number}) => {
+  const renderItem = ({item: level}: {item: ILevel; index: number}) => {
+    const isDisabled: boolean = level.index > lastAvailableLevel;
+
     return (
       <Container
         key={level.id}
         style={styles.item}
         onPress={() => navigation.navigate('Level', {id: level.id})}
+        isDisabled={isDisabled}
       >
-        <Text style={styles.levels__itemText}>{`Level ${index + 1}`}</Text>
+        <Text style={styles.levels__itemText}>{`Level ${level.index}`}</Text>
       </Container>
     );
   };
 
   return (
-    <Screen style={styles.screen}>
+    <Screen>
       <Grid
         items={levels}
         renderItem={renderItem}

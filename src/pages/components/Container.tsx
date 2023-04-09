@@ -10,16 +10,19 @@ import {Colors} from '../../style';
 
 interface IContainerProps {
   onPress?: () => void;
+  isDisabled?: boolean;
   style?: StyleProp<ViewStyle>;
   children?: ReactNode;
 }
 
 export const Container = (props: IContainerProps) => {
-  const {onPress, style, children} = props;
+  const {onPress, isDisabled, style, children} = props;
 
   return (
-    <TouchableWithoutFeedback onPress={onPress}>
-      <View style={[styles.container, style]}>{children}</View>
+    <TouchableWithoutFeedback onPress={!isDisabled ? onPress : undefined}>
+      <View style={[styles.container, isDisabled && styles.disabled, style]}>
+        {children}
+      </View>
     </TouchableWithoutFeedback>
   );
 };
@@ -36,5 +39,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     // elevation: 20,
     // shadowColor: "black",
+  },
+  disabled: {
+    backgroundColor: 'rgba(0, 0, 0, 0.2)',
   },
 });
