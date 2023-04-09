@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
   cell__text: {
     flex: 1,
     textAlign: 'center',
-    fontSize: 32,
+    fontSize: 25,
     color: Colors.TEXT_PRIMARY,
   },
   cell_boldTopBorder: {
