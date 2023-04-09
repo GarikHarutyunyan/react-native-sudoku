@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     aspectRatio: 1,
     width: '18%',
     borderWidth: 1,
-    borderRadius: 5,
+    borderRadius: 15,
     borderColor: Colors.TEXT_PRIMARY,
     flexDirection: 'row',
     alignItems: 'center',
