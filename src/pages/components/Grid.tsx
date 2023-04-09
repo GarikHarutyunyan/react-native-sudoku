@@ -4,12 +4,13 @@ import {FlatList, StyleProp, StyleSheet, View, ViewStyle} from 'react-native';
 interface IGridProps {
   items: unknown[];
   itemStyle: StyleProp<ViewStyle>;
+  style?: StyleProp<ViewStyle>;
   renderItem: ({item, index}: {item: any; index: number}) => ReactElement;
   numColumns: number;
 }
 
 export const Grid = (props: IGridProps) => {
-  const {items, renderItem, itemStyle, numColumns} = props;
+  const {items, renderItem, itemStyle, style, numColumns} = props;
   const formatItems = (dataList: unknown[], numColumns: number) => {
     const totalRows = Math.floor(dataList.length / numColumns);
     let totalLastRow = dataList.length - totalRows * numColumns;
@@ -38,20 +39,16 @@ export const Grid = (props: IGridProps) => {
   };
 
   return (
-    <View>
-      <FlatList
-        data={formatedItems}
-        renderItem={renderFormatedItem}
-        numColumns={numColumns}
-      />
-    </View>
+    <FlatList
+      data={formatedItems}
+      renderItem={renderFormatedItem}
+      numColumns={numColumns}
+      style={style}
+    />
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
   itemInvisible: {
     backgroundColor: 'transparent',
   },

@@ -1,4 +1,3 @@
-import {StyleSheet, Text, View} from 'react-native';
 import {Level} from './src/pages/level/Level';
 import {Provider} from 'react-redux';
 import {persistor, store} from './src/store/store';
@@ -6,6 +5,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {PersistGate} from 'redux-persist/integration/react';
 import {Levels} from './src/pages/levels/Levels';
+import {HomeScreen} from './src/pages/HomeScreen/HomeScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -18,8 +18,9 @@ export default function App() {
             screenOptions={{
               headerShown: false,
             }}
-            initialRouteName={'Levels'}
+            initialRouteName={'Home'}
           >
+            <Stack.Screen name="Home" component={HomeScreen} />
             <Stack.Screen name="Levels" component={Levels} />
             <Stack.Screen name="Level" component={Level} />
           </Stack.Navigator>

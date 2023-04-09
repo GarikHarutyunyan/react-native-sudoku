@@ -4,11 +4,12 @@ import {getLevels, selectLevels} from '../../store/levelSlice';
 import {ILevel} from '../../data-structures';
 import {StyleSheet, Text} from 'react-native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {Colors} from '../../style';
 import {Container} from '../components/Container';
 import {Screen} from '../components/Screen';
 import {Grid} from '../components/Grid';
 import {selectLastAvailableLevel} from '../../store/userSlice';
+import {TopBar} from '../components/TopBar';
+import {Colors} from '../../style';
 
 type RootStackParamList = {
   Level: {id: string};
@@ -44,18 +45,23 @@ const Levels = (props: ILevelsProps) => {
         onPress={() => navigation.navigate('Level', {id: level.id})}
         isDisabled={isDisabled}
       >
-        <Text style={styles.levels__itemText}>{`Level ${level.index}`}</Text>
+        <Text style={styles.textNumber}>{level.index}</Text>
+        <Text style={styles.text}>{`Level`}</Text>
       </Container>
     );
   };
 
+  const onBack = () => navigation.goBack();
+
   return (
     <Screen>
+      <TopBar onBack={onBack} />
       <Grid
         items={levels}
         renderItem={renderItem}
         itemStyle={styles.item}
         numColumns={3}
+        style={styles.grid}
       />
     </Screen>
   );
@@ -64,10 +70,20 @@ const Levels = (props: ILevelsProps) => {
 const styles = StyleSheet.create({
   item: {
     flex: 1,
-    margin: 10,
+    flexDirection: 'column',
+    margin: 15,
+    aspectRatio: 0.8,
   },
-  levels__itemText: {
+  textNumber: {
+    fontSize: 45,
+    color: Colors.TEXT_PRIMARY,
+  },
+  text: {
     fontSize: 25,
+    color: Colors.TEXT_PRIMARY,
+  },
+  grid: {
+    marginHorizontal: 15,
   },
 });
 
