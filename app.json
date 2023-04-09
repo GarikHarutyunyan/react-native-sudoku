@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "react-native-sudoku",
-    "slug": "react-native-sudoku",
+    "slug": "sudoku",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -25,6 +25,18 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "610b5df9-6c60-4095-b485-bd9d2367e689"
+      }
+    },
+    "owner": "garikharutyunyan",
+    "runtimeVersion": {
+      "policy": "sdkVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/610b5df9-6c60-4095-b485-bd9d2367e689"
     }
   }
 }
