@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     flexShrink: 1,
     borderWidth: 2,
     borderColor: Colors.TEXT_PRIMARY,
-    marginHorizontal: 25,
+    margin: 25,
   },
   matrix__row: {
     flexShrink: 1,

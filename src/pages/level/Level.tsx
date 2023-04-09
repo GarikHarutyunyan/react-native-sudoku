@@ -1,7 +1,6 @@
-import React, {useState, useEffect} from 'react';
+import React, {useCallback, useEffect} from 'react';
 import {StyleSheet, View} from 'react-native';
-import {Colors} from '../../style';
-import {Matrix} from '../components';
+import {Button, Matrix, Refresh} from '../components';
 import {NumberBoard} from '../components/NumberBoard';
 import {useDispatch, useSelector} from 'react-redux';
 import {checkIsSolved, getLevel, selectLevel} from '../../store/levelSlice';
@@ -48,9 +47,15 @@ const Level = (props: ILevelProps) => {
 
   const onBack = () => navigation.goBack();
 
+  const onReset = useCallback(() => {
+    activeLevel && dispatch(getLevel(activeLevel?.id));
+  }, [activeLevel]);
+
   return (
     <Screen style={styles.level}>
-      <TopBar onBack={onBack} />
+      <TopBar onBack={onBack}>
+        <Button icon={<Refresh width={40} height={40} />} onPress={onReset} />
+      </TopBar>
       {isSolved ? (
         <Win />
       ) : (
