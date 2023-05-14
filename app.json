@@ -3,6 +3,7 @@
     "name": "react-native-sudoku",
     "slug": "sudoku",
     "version": "0.1.1",
+    "android.versionCode": "2",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
