@@ -3,7 +3,6 @@
     "name": "react-native-sudoku",
     "slug": "sudoku",
     "version": "0.1.1",
-    "android.versionCode": "2",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -19,6 +18,7 @@
       "supportsTablet": true
     },
     "android": {
+      "versionCode": "2",
       "permissions": ["com.google.android.gms.permission.AD_ID"],
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
