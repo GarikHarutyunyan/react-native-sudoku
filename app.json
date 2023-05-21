@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "react-native-sudoku",
+    "name": "Sudoku",
     "slug": "sudoku",
     "version": "0.1.1",
     "orientation": "portrait",
@@ -18,7 +18,7 @@
       "supportsTablet": true
     },
     "android": {
-      "versionCode": "2",
+      "versionCode": "3",
       "permissions": ["com.google.android.gms.permission.AD_ID"],
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
