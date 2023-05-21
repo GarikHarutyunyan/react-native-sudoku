@@ -6,6 +6,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {PersistGate} from 'redux-persist/integration/react';
 import {Levels} from './src/pages/levels/Levels';
 import {HomeScreen} from './src/pages/HomeScreen/HomeScreen';
+import {AboutScreen} from './src/pages/about/AboutScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -23,6 +24,7 @@ export default function App() {
             <Stack.Screen name="Home" component={HomeScreen} />
             <Stack.Screen name="Levels" component={Levels} />
             <Stack.Screen name="Level" component={Level} />
+            <Stack.Screen name="About" component={AboutScreen} />
           </Stack.Navigator>
         </PersistGate>
       </Provider>

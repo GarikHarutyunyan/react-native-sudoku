@@ -10,7 +10,7 @@ import {
 } from '../../store/levelSlice';
 import {ICoordinate} from '../../data-structures';
 
-const matrix = Array(9).fill(Array(9).fill(0));
+const emptyMatrix = Array(9).fill(Array(9).fill(0));
 
 const Matrix = () => {
   const activeCell = useSelector(selectActiveCoordinate);
@@ -23,7 +23,7 @@ const Matrix = () => {
   return (
     <View style={styles.board}>
       <View style={styles.matrix}>
-        {matrix.map((row, y) => {
+        {emptyMatrix.map((row, y) => {
           return (
             <View key={y} style={styles.matrix__row}>
               {row.map((_cell: number, x: number) => {
