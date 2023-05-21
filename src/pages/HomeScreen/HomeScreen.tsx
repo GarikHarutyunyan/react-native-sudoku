@@ -6,11 +6,13 @@ import {Colors} from '../../style';
 
 type RootStackParamList = {
   Levels: {};
+  About: {};
 };
 
 type LevelNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
-  'Levels'
+  'Levels',
+  'About'
 >;
 
 interface IHomeScreenProps {
@@ -22,11 +24,17 @@ export const HomeScreen = (props: IHomeScreenProps) => {
   const onPlay = () => {
     navigation.navigate('Levels', {});
   };
+  const openAboutScreen = () => {
+    navigation.navigate('About', {});
+  };
 
   return (
     <Screen style={styles.screen}>
       <Container onPress={onPlay} style={styles.container}>
         <Text style={styles.text}>{'Play'}</Text>
+      </Container>
+      <Container onPress={openAboutScreen} style={styles.container}>
+        <Text style={styles.text}>{'About'}</Text>
       </Container>
     </Screen>
   );
@@ -41,6 +49,7 @@ const styles = StyleSheet.create({
     width: '70%',
     aspectRatio: 5,
     borderRadius: 45,
+    marginVertical: 10,
   },
   text: {
     fontSize: 35,
