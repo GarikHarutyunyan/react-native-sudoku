@@ -1,3 +1,5 @@
+import {ICoordinate} from '../data-structures';
+
 export class GameUtils {
   static checkSolution = (matrix: number[][]): boolean => {
     const BOARD_SIZE = 9;
@@ -35,5 +37,38 @@ export class GameUtils {
     }
 
     return true;
+  };
+
+  static getRowIntersections = (x: number) => {
+    const rowIntersections: ICoordinate[] = [];
+
+    for (let i = 0; i < 9; i++) {
+      rowIntersections.push({x, y: i});
+    }
+
+    return rowIntersections;
+  };
+
+  static getColumnIntersections = (y: number) => {
+    const columnIntersections: ICoordinate[] = [];
+
+    for (let i = 0; i < 9; i++) {
+      columnIntersections.push({x: i, y});
+    }
+
+    return columnIntersections;
+  };
+
+  static getGroupIntersections = ({x, y}: ICoordinate) => {
+    const groupIntersections: ICoordinate[] = [];
+    const baseX: number = 3 * Math.floor(x / 3);
+    const baseY: number = 3 * Math.floor(y / 3);
+    for (let i = 0; i < 3; i++) {
+      for (let j = 0; j < 3; j++) {
+        groupIntersections.push({x: baseX + i, y: baseY + j});
+      }
+    }
+
+    return groupIntersections;
   };
 }

@@ -2,11 +2,11 @@ import {ICoordinate} from '../data-structures';
 
 export class MatrixUtils {
   static getFilledCoordinates = (matrix: number[][]): ICoordinate[] => {
-    return (
+    const filledCoordinates: ICoordinate[] =
       matrix.reduce(
-        (matrixCoordinates: ICoordinate[], row: number[], y: number) => {
+        (matrixCoordinates: ICoordinate[], row: number[], x: number) => {
           const coordinates: ICoordinate[] = row.reduce(
-            (rowCoordinates: ICoordinate[], cell: number, x: number) => {
+            (rowCoordinates: ICoordinate[], cell: number, y: number) => {
               if (cell) {
                 return [...rowCoordinates, {x, y}];
               }
@@ -18,7 +18,8 @@ export class MatrixUtils {
           return [...matrixCoordinates, ...coordinates];
         },
         []
-      ) || []
-    );
+      ) || [];
+
+    return filledCoordinates;
   };
 }
