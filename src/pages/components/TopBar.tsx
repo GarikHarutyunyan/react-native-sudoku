@@ -22,8 +22,8 @@ const TopBar = (props: ITopBarProps) => {
 const styles = StyleSheet.create({
   topBar: {
     flexDirection: 'row',
-    marginHorizontal: 25,
-    marginBottom: 5,
+    marginHorizontal: 18,
+    marginVertical: 10,
     justifyContent: 'space-between',
     alignSelf: 'stretch',
   },

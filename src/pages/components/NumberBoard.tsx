@@ -43,8 +43,7 @@ const NumberBoard = () => {
 const styles = StyleSheet.create({
   numBoard: {
     flexDirection: 'row',
-    marginVertical: 25,
-    marginHorizontal: 25,
+    margin: 18,
     flexWrap: 'wrap',
     flexShrink: 1,
     flexGrow: 1,

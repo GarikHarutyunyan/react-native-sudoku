@@ -23,16 +23,16 @@ const Matrix = () => {
   return (
     <View style={styles.board}>
       <View style={styles.matrix}>
-        {emptyMatrix.map((row, y) => {
+        {emptyMatrix.map((row, x) => {
           return (
-            <View key={y} style={styles.matrix__row}>
-              {row.map((_cell: number, x: number) => {
+            <View key={x} style={styles.matrix__row}>
+              {row.map((_cell: number, y: number) => {
                 const isCellActive: boolean =
                   !!activeCell && activeCell.x === x && activeCell.y === y;
 
                 return (
                   <Cell
-                    key={x}
+                    key={y}
                     x={x}
                     y={y}
                     isActive={isCellActive}
@@ -57,7 +57,8 @@ const styles = StyleSheet.create({
     flexShrink: 1,
     borderWidth: 2,
     borderColor: Colors.TEXT_PRIMARY,
-    margin: 25,
+    marginVertical: 30,
+    marginHorizontal: 18,
   },
   matrix__row: {
     flexShrink: 1,
