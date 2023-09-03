@@ -1,8 +1,13 @@
 import {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {getLevels, selectLevels} from '../../store/levelSlice';
-import {ILevel} from '../../data-structures';
-import {StyleSheet, Text} from 'react-native';
+import {
+  getLevels,
+  selectLevels,
+  selectLevelsStatus,
+} from '../../store/levelSlice';
+import {BallIndicator} from 'react-native-indicators';
+import {ILevel, RequestStatus} from '../../data-structures';
+import {ActivityIndicator, StyleSheet, Text} from 'react-native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {Container} from '../components/Container';
 import {Screen} from '../components/Screen';
@@ -24,10 +29,12 @@ interface ILevelsProps {
   navigation: LevelNavigationProp;
 }
 
-const Levels = (props: ILevelsProps) => {
+const Levels: React.FC<ILevelsProps> = (props) => {
   const {navigation} = props;
-  const levels: ILevel[] = useSelector(selectLevels);
+  const levels: ILevel[] | undefined = useSelector(selectLevels);
   const lastAvailableLevel: number = useSelector(selectLastAvailableLevel);
+  const levelsStatus: RequestStatus = useSelector(selectLevelsStatus);
+  const isLoading: boolean = levelsStatus === RequestStatus.LOADING;
 
   const dispatch = useDispatch<any>();
 
@@ -56,13 +63,22 @@ const Levels = (props: ILevelsProps) => {
   return (
     <Screen>
       <TopBar onBack={onBack} />
-      <Grid
-        items={levels}
-        renderItem={renderItem}
-        itemStyle={styles.item}
-        numColumns={3}
-        style={styles.grid}
-      />
+      {isLoading ? (
+        <BallIndicator
+          color={Colors.TEXT_PRIMARY}
+          count={10}
+          size={55}
+          style={{marginBottom: 55}}
+        />
+      ) : (
+        <Grid
+          items={levels}
+          renderItem={renderItem}
+          itemStyle={styles.item}
+          numColumns={3}
+          style={styles.grid}
+        />
+      )}
     </Screen>
   );
 };

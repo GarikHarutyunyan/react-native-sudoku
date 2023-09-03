@@ -3,13 +3,21 @@ import {StyleSheet, View} from 'react-native';
 import {Button, Matrix, Refresh} from '../components';
 import {NumberBoard} from '../components/NumberBoard';
 import {useDispatch, useSelector} from 'react-redux';
-import {checkIsSolved, getLevel, selectLevel} from '../../store/levelSlice';
+import {
+  checkIsSolved,
+  getLevel,
+  selectLevel,
+  selectLevelStatus,
+} from '../../store/levelSlice';
+import {BallIndicator} from 'react-native-indicators';
 import {TopBar} from '../components/TopBar';
 import {Win} from '../components/Win';
 import {RouteProp} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {Screen} from '../components/Screen';
 import {changeLastAvailableLevel} from '../../store/userSlice';
+import {ILevel, RequestStatus} from '../../data-structures';
+import {Colors} from 'react-native/Libraries/NewAppScreen';
 
 type RootStackParamList = {
   Level: {id: string};
@@ -30,10 +38,12 @@ const Level = (props: ILevelProps) => {
   const {navigation, route} = props;
   const dispatch = useDispatch<any>();
   const isSolved = useSelector(checkIsSolved);
-  const activeLevel = useSelector(
+  const activeLevel: ILevel | null = useSelector(
     selectLevel,
     (level1, level2) => level1?.id === level2?.id
   );
+  const levelStatus: RequestStatus = useSelector(selectLevelStatus);
+  const isLoading: boolean = levelStatus === RequestStatus.LOADING;
 
   useEffect(() => {
     dispatch(getLevel(route.params.id));
@@ -58,6 +68,13 @@ const Level = (props: ILevelProps) => {
       </TopBar>
       {isSolved ? (
         <Win />
+      ) : isLoading ? (
+        <BallIndicator
+          color={Colors.TEXT_PRIMARY}
+          count={10}
+          size={55}
+          style={{marginBottom: 55}}
+        />
       ) : (
         <>
           <Matrix />
