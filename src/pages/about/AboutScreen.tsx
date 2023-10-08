@@ -28,7 +28,7 @@ export const AboutScreen = (props: IAboutScreenProps) => {
       <Text style={styles.textHeader}>{'About Sudoku'}</Text>
       <Text style={styles.textBody}>
         {
-          'Sudoku is a classic Japanese puzzle game that has taken the world by storm. The rules are simple: fill in a 9x9 grid with numbers from 1 to 9, making sure that each row, column, and 3x3 sub-grid contains all of the digits exactly once. But dont be fooled by the simplicity of the rules – solving even the easiest Sudoku puzzles requires a sharp mind and a lot of patience. \n    Our Sudoku game offers a wide range of difficulty levels, from beginner to expert, so you can choose the challenge that suits you best. Whether you are a seasoned Sudoku pro or just starting out, you will find plenty of puzzles to keep you entertained for hours.'
+          'Sudoku is a classic Japanese puzzle game that has taken the world by storm. The rules are simple: fill in a 9x9 grid with numbers from 1 to 9 making sure that each row, column and 3×3 sub-grid contains all of the digits exactly once. But do not be fooled by the simplicity of the rules - solving even the easiest Sudoku puzzles requires a sharp mind and a lot of patience. \n    Our Sudoku game offers a wide range of difficulty levels from beginner to expert so you can choose the challenge that suits you best. Whether you are a seasoned Sudoku pro or just starting out you will find plenty of puzzles to keep you entertained for hours.'
         }
       </Text>
     </Screen>
