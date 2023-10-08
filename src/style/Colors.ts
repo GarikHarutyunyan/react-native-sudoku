@@ -4,6 +4,6 @@ export enum Colors {
   APP_SECONDARY_LIGHT = '#00e0e0',
   APP_ERROR = '#ffb5dd',
   TEXT_PRIMARY = '#2e313a',
-  TEXT_SECONDARY = '#373d4c',
+  TEXT_SECONDARY = '#0088ee',
   TEXT_ERROR = '#ee5555',
 }
