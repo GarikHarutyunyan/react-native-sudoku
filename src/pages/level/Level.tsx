@@ -9,7 +9,7 @@ import {
   selectLevel,
   selectLevelStatus,
 } from '../../store/levelSlice';
-import {BallIndicator} from 'react-native-indicators';
+import {ActivityIndicator} from 'react-native-paper';
 import {TopBar} from '../components/TopBar';
 import {Win} from '../components/Win';
 import {RouteProp} from '@react-navigation/native';
@@ -17,7 +17,7 @@ import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {Screen} from '../components/Screen';
 import {changeLastAvailableLevel} from '../../store/userSlice';
 import {ILevel, RequestStatus} from '../../data-structures';
-import {Colors} from 'react-native/Libraries/NewAppScreen';
+import {Colors} from '../../style';
 
 type RootStackParamList = {
   Level: {id: string};
@@ -69,11 +69,15 @@ const Level = (props: ILevelProps) => {
       {isSolved ? (
         <Win />
       ) : isLoading ? (
-        <BallIndicator
-          color={Colors.TEXT_PRIMARY}
-          count={10}
-          size={55}
-          style={{marginBottom: 55}}
+        <ActivityIndicator
+          color={Colors.APP_SECONDARY}
+          size={100}
+          animating={true}
+          style={{
+            marginTop: 'auto',
+            marginBottom: 'auto',
+            paddingBottom: 100,
+          }}
         />
       ) : (
         <>

@@ -5,9 +5,9 @@ import {
   selectLevels,
   selectLevelsStatus,
 } from '../../store/levelSlice';
-import {BallIndicator} from 'react-native-indicators';
 import {ILevel, RequestStatus} from '../../data-structures';
-import {ActivityIndicator, StyleSheet, Text} from 'react-native';
+import {StyleSheet, Text} from 'react-native';
+import {ActivityIndicator} from 'react-native-paper';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {Container} from '../components/Container';
 import {Screen} from '../components/Screen';
@@ -64,11 +64,15 @@ const Levels: React.FC<ILevelsProps> = (props) => {
     <Screen>
       <TopBar onBack={onBack} />
       {isLoading ? (
-        <BallIndicator
-          color={Colors.TEXT_PRIMARY}
-          count={10}
-          size={55}
-          style={{marginBottom: 55}}
+        <ActivityIndicator
+          color={Colors.APP_SECONDARY}
+          size={100}
+          animating={true}
+          style={{
+            marginTop: 'auto',
+            marginBottom: 'auto',
+            paddingBottom: 100,
+          }}
         />
       ) : (
         <Grid
