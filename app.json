@@ -2,7 +2,7 @@
   "expo": {
     "name": "Sudoku",
     "slug": "sudoku",
-    "version": "0.1.5",
+    "version": "0.1.7",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -16,7 +16,7 @@
       "supportsTablet": true
     },
     "android": {
-      "versionCode": "6",
+      "versionCode": 8,
       "permissions": ["com.google.android.gms.permission.AD_ID"],
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
@@ -38,6 +38,8 @@
     },
     "updates": {
       "url": "https://u.expo.dev/610b5df9-6c60-4095-b485-bd9d2367e689"
-    }
+    },
+    "plugins": ["expo-router"],
+    "newArchEnabled": true
   }
 }
